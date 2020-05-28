@@ -9,6 +9,8 @@ var usersRouter = require('./routes/users');
 let parameterRouter = require('./routes/parameter_Router');
 let machineRouter = require('./routes/machine_Router');
 let userRouter = require('./routes/user_Router');
+let fetchRouter = require('./routes/fetchParameter')
+
 var app = express();
 
 // view engine setup
@@ -26,6 +28,7 @@ app.use('/users', usersRouter);
 app.use('/parameters',parameterRouter);
 app.use('/machines',machineRouter);
 app.use('/userss',userRouter);
+app.use('/fetchData',fetchRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

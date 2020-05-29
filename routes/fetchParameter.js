@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var moment = require('moment');
 
 //For Generic Queries
 var generic = require("../models/generic");
@@ -28,11 +29,16 @@ router.post('/', function (req, res, next) {
 
         if (type === 'weekly') {
             table = 'daily_data';
-
+            let endDate = moment(startDate).add(-7,'day').format("YYYY-MM-DDTHH:mm:ss SSS");
+            console.log(" Type : ",type);
+            console.log(" startDate : ",startDate);
+            console.log(" EndDate : ",endDate);
+            console.log(" Parameter : ",parameter);
         }
 
         else if (type === 'monthly') {
             table = 'monthly_data';
+           
         }
 
         else if (type === 'hourly') {

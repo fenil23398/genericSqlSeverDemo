@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 
-
 //For Generic Queries
 var generic = require("../models/generic");
 
@@ -9,6 +8,7 @@ var generic = require("../models/generic");
 var commonMethods = require("../genericMethods");
 
 let table = '';
+
 router.post('/', function (req, res, next) {
 
         let startDate = '';
@@ -28,6 +28,7 @@ router.post('/', function (req, res, next) {
         if(parameter === '')
             res.status(400).send("Parameter is Missing");
 
+
         if (type === 'weekly') {
             table = 'daily_data';
             endDate = commonMethods.getDaysBack(startDate,-7)
@@ -46,11 +47,13 @@ router.post('/', function (req, res, next) {
         else {
             res.status(400).send("Invalid Paramater Type");
         }
+
         console.log(" Type : ",type);
         console.log(" startDate : ",startDate);
         console.log(" EndDate : ",endDate);
         console.log(" Parameter : ",parameter);
         console.log(" Table Name : ",table);
+        
         generic.fetchParameters(table,parameter,startDate,endDate)
         .then(data => {
             console.log("Data Fetched ",data);

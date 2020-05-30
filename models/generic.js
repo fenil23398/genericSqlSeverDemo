@@ -17,6 +17,7 @@ var paramsHourly = {
         return request.query("insert into parameter_data ([machine_id],[timestamp],[flow],[energy],[pressure],[humidity],[temprature]) values('"+machineId+"','" + date + "','"+flow+"','"+energy+"','"+pressure+"','"+humidity+"','"+temp+"')")
     },
     fetchParameters : function(table,parameter,startDate,endDate){
+        console.log("Parameters Fetched ",table , )
 
     }
 }
